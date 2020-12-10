@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans:wght@300&display=swap');
+
+.container{
+    margin:0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #105a5a;
+    color:white;
+    height:10vh;
+    font-family: 'Encode Sans', sans-serif;
+}
+
+.p-container{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+h1{
+    padding-left:16px;
+}
+
+p{
+    padding: 15px;
+}
+
+.link{
+    color:white;
+    text-decoration: none;
+}

@@ -10,16 +10,14 @@ import {
   Input,
 } from "@material-ui/core";
 
-axios.defaults.withCredentials = true
-
-export default class SignIn extends Component {
+export default class Register extends Component {
   constructor() {
     super();
 
     this.state = {
         username: '',
         password: '',
-        user: ''
+        photo: ''
     };
   }
 
@@ -27,13 +25,18 @@ export default class SignIn extends Component {
     let element = e.target.value;
     this.setState({username: element})
   }
-
   getPassword = e => {
     let element = e.target.value;
     this.setState({password: element})
   }
+  getPhoto = e => {
+    let element = e.target.value;
+    this.setState({photo: element})
+  }
 
-  signIn =e => {
+
+
+  registerAccount =e => {
       e.preventDefault();
       console.log('hello')
 
@@ -43,21 +46,18 @@ export default class SignIn extends Component {
         picture: this.state.photo
       }
 
-      axios.post(`https://boatertalk.herokuapp.com/login`, user, {withCredentials:true})
+      axios.post(`https://boatertalk.herokuapp.com/register`, user)
         .then(res => {
-            return res
+            console.log(res)
         })
-        .then(data => {
-          this.setState({user: data})
-        })
-        
   }
 
+
+
   render() {
-    console.log(this.state.user)
     return (
       <Container>
-        <Typography>Sign In</Typography>
+        <Typography>Create Account</Typography>
         <div className='input-area'>
             <TextField 
             className='box'
@@ -77,11 +77,20 @@ export default class SignIn extends Component {
             variant="outlined"
             onChange={this.getPassword}
             />
+            
+            <TextField 
+            className='box'
+            id="outlined-password-input"
+            label="Photo Url"
+            type="url"
+            variant="outlined" 
+            onChange={this.getPhoto}
+            />
             <Button 
             className='box'
             type = "submit" 
             variant="outlined"
-            onClick={this.signIn}>
+            onClick={this.registerAccount}>
             Submit
             </Button>
         </div>
