@@ -4,7 +4,7 @@ import './SearchRiver.css'
 import {Route,Link} from "react-router-dom"
 import {InputLabel, FormHelperText, FormControl, Select, NativeSelect, Button} from '@material-ui/core/';
 
-axios.defaults.withCredentials = false
+// axios.defaults.withCredentials = false
 
 export default class SearchRiver extends Component{
     constructor(){
@@ -13,6 +13,7 @@ export default class SearchRiver extends Component{
         this.state ={
             rivers:'',
             state: '',
+            holder: ''
         }
     }
 
@@ -24,8 +25,7 @@ export default class SearchRiver extends Component{
     getRivers = e => {
         let rivers = ''
         const url = `https://waterservices.usgs.gov/nwis/iv/?format=json&stateCd=${this.state.state}&parameterCd=00060,00065&siteType=ST&siteStatus=all`
-        console.log(url)
-        axios.get(url)
+        axios.get(url, {withCredentials:false})
             .then(res => {
                 rivers = res
                 this.filterRivers(rivers) 
@@ -33,15 +33,40 @@ export default class SearchRiver extends Component{
     }
 
     filterRivers = rivers => {
-        console.log(rivers)
+        let riverInfo = []
         let riverArray = rivers.data.value.timeSeries
         console.log(riverArray)
+       
+        for(let i = 1; i < riverArray.length; i++){
+            //if elements name same as last element name then do this
+            console.log(riverArray[i].sourceInfo.siteName)
+            if(riverArray[i].sourceInfo.siteName == riverArray[i - 1].sourceInfo.siteName){
+                console.log(`hit ${riverArray[i]}`)
+            }else{
+                console.log('here')
+                let river = {
+                    name : riverArray[i].sourceInfo.siteName
+                }
+                riverInfo.push(river)
+                // console.log(riverInfo)
+            }
+            return riverInfo
+            //else push new element into the new array
+        }
+        console.log('hello from the outher side')
+        // this.buildHtml(riverInfo)
+        // console.log(riverInfo)
+        //call function and pass it the array of information elements that we have made
+    }
+
+    buildHtml = rivers => {
+        console.log(rivers)
     }
 
 
 
     render(){
-        console.log(this.state.state)
+        // console.log(this.state.state)
         return(<div>
         <div className="sub-container">
         <FormControl>
@@ -109,6 +134,9 @@ export default class SearchRiver extends Component{
             <FormHelperText>Search Rivers By State</FormHelperText>
       </FormControl>
         <Button variant="outlined" type="submit" onClick={this.getRivers}>Submit</Button>
+        </div>
+        <div>{this.state.holder}
+
         </div>
         </div>
         )

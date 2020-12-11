@@ -20,7 +20,7 @@ class Home extends Component{
   componentDidMount = () => {
     console.log('app-mounted')
 
-    axios.get(`https://boatertalk.herokuapp.com/getUser`)
+    axios.post(`https://boatertalk.herokuapp.com/getUser`)
       .then(res => {
           console.log(res)
         this.setState({user: res})
