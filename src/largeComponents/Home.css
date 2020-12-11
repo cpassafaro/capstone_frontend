@@ -1,5 +1,35 @@
-.home{
+
+
+.grid-container{
+    box-sizing:border-box;
+    display:grid;
+    grid-template-rows: 30vh 30vh 30vh;
+    grid-template-columns: 25% 25% 50%;
+    justify-content: center;
+    object-fit: cover;
+}
+
+.grid{
+    border: 6px solid white;
+    display:flex;
+    justify-content: center;;
+    align-items: center;
+    font-size: large;
+    font-weight: 900;
+    object-fit: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+.image1{
     background-image: url("https://static.vecteezy.com/system/resources/previews/000/242/523/non_2x/vector-kayak-downing-waterfall.jpg");
     background-size: cover;
-    height:800px;
+    /* height:800px; */
+}
+
+.box3{
+    grid-row: span 3;
+    display:flex;
+    flex-direction: column;
 }
