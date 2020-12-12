@@ -70,10 +70,12 @@ export default class SearchRiver extends Component {
     let interior = [];
     rivers.forEach((element) => {
       let div = (
-        <div className="container">
-          <div className="title">{element.name}</div>
-          <div className="title">Current Water Level :{element.value}</div>
-          <Button>See River Details</Button>
+        <div className="river-box">
+          <div className="river-title">{element.name}</div>
+          <div className="river-level">Current Water Level :{element.value} cfs</div>
+          <Link to={{pathname: "/riverdetails", params: {data: element}}}>
+            <Button>See River Details</Button>
+          </Link>
         </div>
       );
       interior.push(div);
@@ -82,13 +84,12 @@ export default class SearchRiver extends Component {
   };
 
   render() {
-    // console.log(this.state.state)
     return (
       <div>
         <div className="sub-container">
-          <FormControl>
-            <InputLabel htmlFor="age-native-helper">State</InputLabel>
-            <NativeSelect onChange={this.getInput}>
+          <FormControl style={{color: "white"}}>
+            <InputLabel htmlFor="age-native-helper" style={{color: "white"}}>State</InputLabel>
+            <NativeSelect style={{color: "white"}} onChange={this.getInput}>
               <option aria-label="None" value="" />
               <option value={"al"}>Alabama</option>
               <option value={"ak"}>Alaska</option>
@@ -146,13 +147,13 @@ export default class SearchRiver extends Component {
               <option value={"wi"}>Wisconson</option>
               <option value={"wy"}>Wyoming</option>
             </NativeSelect>
-            <FormHelperText>Search Rivers By State</FormHelperText>
+            <FormHelperText style={{color: "white"}}>Search Rivers By State</FormHelperText>
           </FormControl>
-          <Button variant="outlined" type="submit" onClick={this.getRivers}>
+          <Button style={{color: "white", border: '2px solid white'}} variant="outlined" type="submit" onClick={this.getRivers}>
             Submit
           </Button>
         </div>
-        <div>{this.state.holder}</div>
+        <div className="main-container">{this.state.holder}</div>
       </div>
     );
   }

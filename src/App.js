@@ -5,6 +5,7 @@ import Header from './components/Header'
 import SignIn from './components/SignIn'
 import Home from './largeComponents/Home'
 import SearchRiver from './largeComponents/SearchRiver';
+import RiverDetailsPage from './largeComponents/RiverDetailsPage'
 import Register from './components/Register'
 import { CircularProgress } from "@material-ui/core/";
 import { Route, Link} from "react-router-dom";
@@ -46,6 +47,7 @@ class App extends Component{
           <Route path='/register' component={Register}/>
           <Route exact path='/' component={Home}/>
           <Route path='/searchrivers' component={SearchRiver}/>
+          <Route path='/riverdetails' component={RiverDetailsPage}/>
         </main>
       </div>
     )

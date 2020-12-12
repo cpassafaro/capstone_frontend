@@ -1,0 +1,44 @@
+body{
+    /* background-image: url("https://images.squarespace-cdn.com/content/v1/5250372be4b0d22007ce8b7b/1417546022215-3H5H1JHV5TL9UKKLOXRZ/ke17ZwdGBToddI8pDm48kICuQGtBKl8a4B16WWHnybRZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIZn3HZcQxAptwM7wNF0FtX6FWm_cA3wg3kxjL0U1XIBsKMshLAGzx4R3EDFOm1kBS/ninamontenegro_rivers_web.jpg?format=2500w");
+    filter:hue-rotate(90deg);
+    background-size: cover; */
+}
+.overall-container{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.weather-title-name{
+    background: #75b1b1;
+    color: white;
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    border: 5px solid white;
+    width:80%;
+    height: 32vh
+}
+
+.river-box{
+    border: 2px solid pink;
+    width:40%;
+    height: 30vh
+
+}
+
+.weather-box{
+    border: 2px solid pink;
+    width:40%;
+    height: 30vh
+
+}
+
+.textfield{
+    width:60%;
+    color:white;
+
+}

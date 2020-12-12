@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans:wght@300&display=swap');
 
 .grid-container{
     box-sizing:border-box;
@@ -22,14 +22,33 @@
 }
 
 
-.image1{
+.image{
     background-image: url("https://static.vecteezy.com/system/resources/previews/000/242/523/non_2x/vector-kayak-downing-waterfall.jpg");
     background-size: cover;
-    /* height:800px; */
+
+}
+.box1{
+    filter:hue-rotate(90deg);
+}
+
+.box6{
+    filter:hue-rotate(90deg);
+}
+
+.box5{
+    filter:hue-rotate(90deg);
 }
 
 .box3{
     grid-row: span 3;
     display:flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color:white;
+    font-family: 'Encode Sans', sans-serif;
+}
+
+.title{
+    font-size: 40px;
 }
