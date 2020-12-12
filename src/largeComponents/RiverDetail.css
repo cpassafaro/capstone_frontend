@@ -24,11 +24,14 @@ body{
     min-height: 180px;
 }
 
-.river-box{
+.river-detail-box{
     border: 2px solid pink;
     width:40%;
-    height: 30vh
-
+    height: 30vh;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .weather-box{

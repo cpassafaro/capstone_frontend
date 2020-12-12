@@ -86,7 +86,7 @@ export default class SearchRiver extends Component {
 
   render() {
     return (
-      <div>
+      <div className='og'>
         <div className="sub-container">
           <FormControl style={{color: "white"}}>
             <InputLabel htmlFor="age-native-helper" style={{color: "white"}}>State</InputLabel>

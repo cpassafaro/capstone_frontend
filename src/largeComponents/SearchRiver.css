@@ -4,8 +4,9 @@
     justify-content: center;
     align-items: center;
     color:white;
-    padding-top:15px;
-    padding-bottom:15px;
+    padding-top:20px;
+    padding-bottom:20px;
+    border:3px solid white;
 }
 
 .Button{
@@ -18,18 +19,27 @@
 
 .main-container{
     background-image: url("https://images.squarespace-cdn.com/content/v1/5250372be4b0d22007ce8b7b/1417546022215-3H5H1JHV5TL9UKKLOXRZ/ke17ZwdGBToddI8pDm48kICuQGtBKl8a4B16WWHnybRZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIZn3HZcQxAptwM7wNF0FtX6FWm_cA3wg3kxjL0U1XIBsKMshLAGzx4R3EDFOm1kBS/ninamontenegro_rivers_web.jpg?format=2500w");
-    filter:invert(100%);
+    opacity: .7;
+    min-height: 200px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: repeat;
+    background-size: contain;
+    /* filter:invert(100%); */
     /* background-size: cover; */
     display:flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+    overflow-y: scroll;
 }
 
 .river-box{
     display:flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-top: 20px;
     /* background: black; */
+    /* filter:invert(0) */
 }

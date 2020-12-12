@@ -49,19 +49,22 @@ export default class RiverDetailsPage extends Component{
         console.log(this.state.weather)
         return(<div className='overall-container'>
             <div className ='weather-title-name'>
-                <div className="river-box">
+                <div className="river-detail-box">
                     <div className='title'>{this.state.river}</div>
-                    <div>{this.state.level}</div>
+                    <div>{this.state.level} cfs</div>
                 </div>
                 <div className="weather-box">
                     <div>WEATHER</div>
                     <div>{this.state.temperature}</div>
                     <div>{this.state.weather[0].detailedForecast}</div>
                     <img src={this.state.weather[0].icon}/>
+                    <Button>Get 5 day forecast for this area</Button>
                 </div>
             </div>
             <div className="textfield">
-                <TextField className='textfield' id="outlined-basic" label="Updates" variant="outlined"></TextField>
+                <p>If you have recently gotten a run on this river and would like to leave a rapid update, please do so below.</p>
+                <TextField className='textfield' id="outlined-basic" label="Comment" variant="outlined"></TextField>
+                <Button>Add Comment</Button>
             </div>
         </div>
 
