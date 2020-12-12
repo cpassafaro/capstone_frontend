@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans:wght@300&display=swap');
 *{
   margin:0;
+  font-family: 'Encode Sans', sans-serif;
 }
 body{
   background: #75b1b1;

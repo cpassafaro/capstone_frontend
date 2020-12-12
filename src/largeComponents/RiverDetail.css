@@ -10,8 +10,8 @@ body{
     align-items: center;
 }
 
-.weather-title-name{
-    background: #75b1b1;
+.weather-title-box{
+    /* background: #75b1b1; */
     color: white;
     display:flex;
     flex-direction: row;
@@ -21,28 +21,39 @@ body{
     border: 5px solid white;
     width:80%;
     height: 40vh;
-    min-height: 180px;
+    min-height: 300px;
 }
 
 .river-detail-box{
     border: 2px solid pink;
-    width:40%;
+    width:50%;
     height: 30vh;
     display:flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    min-height: 300px;
 }
 
 .weather-box{
     border: 2px solid pink;
-    width:40%;
-    height: 30vh
-
+    width:50%;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
 }
 
 .textfield{
-    width:60%;
+    display:'flex';
+    justify-content: 'center';
+    align-items: 'center';
     color:white;
-
+    text-align: center;
+}
+.input{
+    width:60%;
+    height:30vh;
 }
