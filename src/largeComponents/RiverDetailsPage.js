@@ -19,11 +19,23 @@ export default class RiverDetailsPage extends Component {
       isLoading: true,
       weather: [],
       comment: "",
+      alreadyCreatedComments: ''
     };
   }
+
+
   componentDidMount = () => {
     // this gets the weather station for our latitue and longitude
     let element = "";
+    axios.get(`https://boatertalk.herokuapp.com/river/${this.state.river}`)
+        .then(res => {
+            if(res.data != null){
+                let element =res.data.userComments
+                this.loopThroughComments(element)
+            }
+        })
+
+
     axios
       .get(
         `https://api.weather.gov/points/${this.state.latitude},${this.state.longitude}`,
@@ -34,6 +46,29 @@ export default class RiverDetailsPage extends Component {
         this.getWeather(element);
       });
   };
+  
+  //is it okay to use component did update for this
+  componentDidUpdate = () => {
+      console.log('update')
+    //   axios.get(`https://boatertalk.herokuapp.com/river/${this.state.river}`)
+    //     .then(res => {
+    //         let element =res.data.userComments
+    //         this.loopThroughComments(element)
+    //     })
+  }
+
+  loopThroughComments = (comments) => {
+    let interior = []
+    comments.forEach(element =>{
+        let div = (
+            <div>{element}</div>
+        )
+        interior.push(div)
+    })
+    this.setState({alreadyCreatedComments: interior})
+  }
+
+
 
   getWeather = (weather) => {
     axios.get(weather, { withCredentials: false }).then((res) => {
@@ -62,17 +97,17 @@ export default class RiverDetailsPage extends Component {
         river
       )
       .then((res) => {
-        console.log(res);
         //we need to create each river so this checks to see if a river hasn't been created yet
         if (res.data == null) {
           axios
             .post(`https://boatertalk.herokuapp.com/river/create`, river)
             .then((res) => {
-              console.log(res);
             });
         }
       });
   };
+
+
 
 
   render() {
@@ -128,6 +163,9 @@ export default class RiverDetailsPage extends Component {
             >
               Add Comment
             </Button>
+          </div>
+          <div>
+            <div>{this.state.alreadyCreatedComments}</div>
           </div>
         </div>
       );
