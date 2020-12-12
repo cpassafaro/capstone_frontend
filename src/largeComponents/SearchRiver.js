@@ -11,7 +11,6 @@ import {
   Button,
 } from "@material-ui/core/";
 
-// axios.defaults.withCredentials = false
 
 export default class SearchRiver extends Component {
   constructor() {
@@ -56,6 +55,8 @@ export default class SearchRiver extends Component {
         let river = {
           name: riverArray[i].sourceInfo.siteName,
           value: riverArray[i].values[0].value[0].value,
+          latitude: riverArray[i].sourceInfo.geoLocation.geogLocation.latitude,
+          longitude: riverArray[i].sourceInfo.geoLocation.geogLocation.longitude
         };
         riverInfo.push(river);
         // console.log(riverInfo)

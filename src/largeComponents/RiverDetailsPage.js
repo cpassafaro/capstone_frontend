@@ -3,9 +3,9 @@ import axios from "axios";
 import "./RiverDetail.css";
 import { Route, Link } from "react-router-dom";
 import {
-  Typography,
   TextField,
   Button,
+  CircularProgress,
 } from "@material-ui/core/";
 
 export default class RiverDetailsPage extends Component{
@@ -13,12 +13,40 @@ export default class RiverDetailsPage extends Component{
         super(props)
         console.log(props)
         this.state = {
-            river: '',
-            level: ''
+            river: props.location.params.data.name,
+            level: props.location.params.data.value,
+            latitude: props.location.params.data.latitude,
+            longitude: props.location.params.data.longitude,
+            name: '',
+            isLoading: true,
+            weather: []
         }
     }
+    componentDidMount = () => {
+        // this gets the weather station for our latitue and longitude
+        let element = ''
+        axios.get(`https://api.weather.gov/points/${this.state.latitude},${this.state.longitude}`, {withCredentials: false})
+            .then(res => {
+                element = res.data.properties.forecast
+                this.getWeather(element)
+            })
+
+    }
+
+    getWeather = weather => {
+        axios.get(weather, {withCredentials: false})
+            .then(res => {
+                this.setState({temperature: res.data.properties.periods[0].name,weather: res.data.properties.periods, isLoading: false})
+            })
+    }
+
+
 
     render(){
+        if(this.state.isLoading == true){
+            return<CircularProgress style={{backgroundColor:'black', display: 'flex', justifyContent: 'center', alignItems:'center'}}/>
+        }else{
+        console.log(this.state.weather)
         return(<div className='overall-container'>
             <div className ='weather-title-name'>
                 <div className="river-box">
@@ -26,17 +54,19 @@ export default class RiverDetailsPage extends Component{
                     <div>{this.state.level}</div>
                 </div>
                 <div className="weather-box">
-                    <div>WEATHHEERRRRRR</div>
+                    <div>WEATHER</div>
+                    <div>{this.state.temperature}</div>
+                    <div>{this.state.weather[0].detailedForecast}</div>
+                    <img src={this.state.weather[0].icon}/>
                 </div>
             </div>
-            <div>
+            <div className="textfield">
                 <TextField className='textfield' id="outlined-basic" label="Updates" variant="outlined"></TextField>
             </div>
         </div>
 
         )
-    }
+    }}
 }
 
-// river: props.location.params.data.name,
-// level: props.location.params.data.value
+
