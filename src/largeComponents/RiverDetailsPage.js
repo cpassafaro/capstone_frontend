@@ -42,8 +42,13 @@ export default class RiverDetailsPage extends Component {
         { withCredentials: false }
       )
       .then((res) => {
-        element = res.data.properties.forecast;
-        this.getWeather(element);
+        //   console.log(res)
+        // if(res != 200){
+        //     this.setState({isLoading:false})
+        // }else{
+            element = res.data.properties.forecast;
+            this.getWeather(element);
+        // }
       });
   };
   
@@ -61,7 +66,7 @@ export default class RiverDetailsPage extends Component {
     let interior = []
     comments.forEach(element =>{
         let div = (
-            <div>{element}</div>
+            <div className='comments'>{element}</div>
         )
         interior.push(div)
     })
@@ -117,9 +122,6 @@ export default class RiverDetailsPage extends Component {
         <CircularProgress
           style={{
             backgroundColor: "black",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
           }}
         />
       );
@@ -151,7 +153,6 @@ export default class RiverDetailsPage extends Component {
               id="outlined-basic"
               label="Comment"
               variant="outlined"
-              style={{ height: "30vh" }}
             ></TextField>
             <Button
               onClick={this.addComment}
