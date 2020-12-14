@@ -1,7 +1,7 @@
-body{
-    /* background-image: url("https://images.squarespace-cdn.com/content/v1/5250372be4b0d22007ce8b7b/1417546022215-3H5H1JHV5TL9UKKLOXRZ/ke17ZwdGBToddI8pDm48kICuQGtBKl8a4B16WWHnybRZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIZn3HZcQxAptwM7wNF0FtX6FWm_cA3wg3kxjL0U1XIBsKMshLAGzx4R3EDFOm1kBS/ninamontenegro_rivers_web.jpg?format=2500w");
-    filter:hue-rotate(90deg);
-    background-size: cover; */
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 .overall-container{
     display:flex;
@@ -51,12 +51,50 @@ body{
     justify-content: 'center';
     align-items: 'center';
     color:white;
-    text-align: center;
+    width:100%
+}
+.text-p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.submission-area{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width:80%
 }
 .input{
-    width:60%;
+    resize: none;
+    height:100px;
+    width:100%;
+    border: 3px solid #573C67;
 }
 
 .comments{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color:#2e878e;
+    color:white;
+    font-size: 20px;
+    padding: 10px;
+    border:3px solid #573C67;
+    margin: 2px;
+    width:80%
+}
+
+.comment-container{
+    width:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.date{
+    font-size:10px;
 
 }

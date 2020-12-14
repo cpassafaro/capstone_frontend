@@ -26,26 +26,14 @@ export default class RiverDetailsPage extends Component {
 
   componentDidMount = () => {
     // this gets the weather station for our latitue and longitude
+    this.getComments()
     let element = "";
-    axios.get(`https://boatertalk.herokuapp.com/river/${this.state.river}`)
-        .then(res => {
-            if(res.data != null){
-                let element =res.data.userComments
-                this.loopThroughComments(element)
-            }
-        })
-
-
     axios
       .get(
         `https://api.weather.gov/points/${this.state.latitude},${this.state.longitude}`,
         { withCredentials: false }
       )
       .then((res) => {
-        //   console.log(res)
-        // if(res != 200){
-        //     this.setState({isLoading:false})
-        // }else{
             element = res.data.properties.forecast;
             this.getWeather(element);
         // }
@@ -53,24 +41,30 @@ export default class RiverDetailsPage extends Component {
   };
   
   //is it okay to use component did update for this
-  componentDidUpdate = () => {
+  getComments = () => {
       console.log('update')
-    //   axios.get(`https://boatertalk.herokuapp.com/river/${this.state.river}`)
-    //     .then(res => {
-    //         let element =res.data.userComments
-    //         this.loopThroughComments(element)
-    //     })
+       axios.get(`https://boatertalk.herokuapp.com/comment/${this.state.river}`)
+        .then(res => {
+          console.log(res)
+            if(res.data != null){
+              console.log(res.data)
+                let element1 =res.data
+                this.loopThroughComments(element1)
+            }
+        })
   }
 
   loopThroughComments = (comments) => {
     let interior = []
     comments.forEach(element =>{
         let div = (
-            <div className='comments'>{element}</div>
+        <div className='comments'>{element.userComments} <p className='date'>{element.commentDate}</p></div>
         )
         interior.push(div)
     })
-    this.setState({alreadyCreatedComments: interior})
+    //comments are added to end of database so to get newest lets reverse it
+    let reversed = interior.reverse();
+    this.setState({alreadyCreatedComments: reversed, comment:''})
   }
 
 
@@ -91,38 +85,37 @@ export default class RiverDetailsPage extends Component {
   };
 
   addComment = () => {
-    let river = {
-      title: this.state.river,
-      userComments: [this.state.comment],
-    };
+    if(this.state.comment == ''){
+      alert('Please enter a comment to submit')
+    }else{
+      let river = {
+        title: this.state.river,
+        userComments: this.state.comment,
+        commentDate: Date.now()
 
-    axios
-      .put(
-        `https://boatertalk.herokuapp.com/river/addComment/${this.state.river}`,
-        river
-      )
-      .then((res) => {
-        //we need to create each river so this checks to see if a river hasn't been created yet
-        if (res.data == null) {
-          axios
-            .post(`https://boatertalk.herokuapp.com/river/create`, river)
-            .then((res) => {
-            });
-        }
-      });
+      };
+      axios.post(`https://boatertalk.herokuapp.com/comment/create`, river)
+        .then(res => {
+          console.log(res)
+        })
+
+      //have to call asynchrnously because axios post request takes a second to update to db
+      setTimeout(() => {
+        this.getComments()
+      }, 2000) 
+    }
   };
 
 
 
 
+
   render() {
-    console.log(this.state.comment);
+    console.log(this.state.weather);
     if (this.state.isLoading == true) {
       return (
         <CircularProgress
-          style={{
-            backgroundColor: "black",
-          }}
+          style={{}}
         />
       );
     } else {
@@ -139,35 +132,40 @@ export default class RiverDetailsPage extends Component {
               <div>{this.state.temperature}</div>
               <div>{this.state.weather[0].detailedForecast}</div>
               <img src={this.state.weather[0].icon} />
-              <Button>Get 5 day forecast for this area</Button>
+              <Link to={{pathname:'/weather', params:{data: this.state.weather}}}>
+                <Button>Get 7 day forecast for this area</Button>
+              </Link>
             </div>
           </div>
           <div className="textfield">
-            <p>
+            <p className='text-p'>
               If you have recently gotten a run on this river and would like to
               leave a rapid update, please do so below.
             </p>
-            <TextField
-              onChange={this.getComment}
-              className="input"
-              id="outlined-basic"
-              label="Comment"
-              variant="outlined"
-            ></TextField>
-            <Button
-              onClick={this.addComment}
-              style={{
-                backgroundColor: "#573C67",
-                color: "white",
-                height: "55px",
-              }}
-            >
-              Add Comment
-            </Button>
           </div>
-          <div>
-            <div>{this.state.alreadyCreatedComments}</div>
+          <div className='submission-area'>
+              <textarea 
+                value={this.state.comment}
+                onChange={this.getComment}
+                className="input"
+                id="outlined-basic"
+                label="Comment"
+                variant="outlined"
+              />
+              <Button
+                onClick={this.addComment}
+                style={{
+                  backgroundColor: "#573C67",
+                  color: "white",
+                  height: "55px",
+                  width:'100%',
+                  borderRadius: '0 0 0 0',
+                }}
+              >
+                Add Comment
+              </Button>
           </div>
+          <div className='comment-container'>{this.state.alreadyCreatedComments}</div>
         </div>
       );
     }

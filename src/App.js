@@ -4,6 +4,7 @@ import './App.css';
 import Header from './components/Header'
 import SignIn from './components/SignIn'
 import Home from './largeComponents/Home'
+import Weather from './largeComponents/Weather'
 import SearchRiver from './largeComponents/SearchRiver';
 import RiverDetailsPage from './largeComponents/RiverDetailsPage'
 import Register from './components/Register'
@@ -48,6 +49,7 @@ class App extends Component{
           <Route exact path='/' component={Home}/>
           <Route path='/searchrivers' component={SearchRiver}/>
           <Route path='/riverdetails' component={RiverDetailsPage}/>
+          <Route path='/weather' component={Weather}/>
         </main>
       </div>
     )

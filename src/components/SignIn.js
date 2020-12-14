@@ -43,8 +43,9 @@ export default class SignIn extends Component {
         picture: this.state.photo
       }
 
-      axios.post(`https://boatertalk.herokuapp.com/login`, user, {withCredentials:true})
+      axios.post(`https://boatertalk.herokuapp.com/login`, user)
         .then(res => {
+            axios.get(`https://boatertalk.herokuapp.com/getUser`)
             return res
         })
         .then(data => {
