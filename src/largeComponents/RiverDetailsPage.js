@@ -121,19 +121,19 @@ export default class RiverDetailsPage extends Component {
     } else {
       console.log(this.state.weather);
       return (
-        <div className="overall-container">
+        <div className="overall-container-here">
           <div className="weather-title-box">
             <div className="river-detail-box">
-              <div className="river-title">{this.state.river}</div>
-              <div>{this.state.level} cfs</div>
+              <div className="river-title opacity">{this.state.river}</div>
+              <div className='opacity'>{this.state.level} cfs</div>
             </div>
             <div className="weather-box">
-              <div>WEATHER</div>
-              <div>{this.state.temperature}</div>
-              <div>{this.state.weather[0].detailedForecast}</div>
-              <img src={this.state.weather[0].icon} />
+              <div className='opacity'>WEATHER</div>
+              <div className='opacity smaller'>{this.state.temperature}: {this.state.weather[0].detailedForecast}</div>
+              {/* <div className='opacity smaller'>{this.state.weather[0].detailedForecast}</div> */}
+              <img src={this.state.weather[0].icon} style={{border: '3px solid black'}}/>
               <Link to={{pathname:'/weather', params:{data: this.state.weather}}}>
-                <Button>Get 7 day forecast for this area</Button>
+                <Button style={{backgroundColor:'#573C67', color:'white', marginTop: '10px', textDecoration:'none'}}>Get 7 day forecast for this area</Button>
               </Link>
             </div>
           </div>

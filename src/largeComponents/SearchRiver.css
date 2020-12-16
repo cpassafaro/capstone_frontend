@@ -18,7 +18,7 @@
 }
 
 .main-container{
-    background-image: url("https://images.squarespace-cdn.com/content/v1/5250372be4b0d22007ce8b7b/1417546022215-3H5H1JHV5TL9UKKLOXRZ/ke17ZwdGBToddI8pDm48kICuQGtBKl8a4B16WWHnybRZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIZn3HZcQxAptwM7wNF0FtX6FWm_cA3wg3kxjL0U1XIBsKMshLAGzx4R3EDFOm1kBS/ninamontenegro_rivers_web.jpg?format=2500w");
+    background-image: url("https://thumbs-prod.si-cdn.com/qO3iy9tRW6Yd1kbgItdFwVU344E=/fit-in/1600x0/https://public-media.si-cdn.com/filer/f3/2a/f32a326a-5cff-48b4-98df-a8df54108b03/usa_48_rivers_black_catchments_draft.png");
     opacity: .7;
     background-attachment: fixed;
     background-position: center;
@@ -32,11 +32,15 @@
 }
 
 .river-box{
+    font-family: Arial, Helvetica, sans-serif;
     display:flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding-top: 20px;
+    color:white;
+    font-weight: bolder;
+    font-size: 20px;
     /* background: black; */
     /* filter:invert(0) */
 }

@@ -10,7 +10,6 @@ import {
   Input,
 } from "@material-ui/core";
 
-axios.defaults.withCredentials = true
 
 export default class SignIn extends Component {
   constructor() {
@@ -43,19 +42,28 @@ export default class SignIn extends Component {
         picture: this.state.photo
       }
 
-      axios.post(`https://boatertalk.herokuapp.com/login`, user)
-        .then(res => {
-            axios.get(`https://boatertalk.herokuapp.com/getUser`)
-            return res
-        })
-        .then(data => {
-          this.setState({user: data})
-        })
-        
+      axios({
+        url:"https://boatertalk.herokuapp.com/login",
+        method:"POST",
+        withCredentials:true,
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data:{
+          username:this.state.username,
+          password:this.state.password,
+        }
+      } 
+      ).then(res=>{
+        console.log(res);
+        localStorage.setItem('token',res.data.token);
+        res.headers.authorization = `Bearer ${res.data.token}`
+        this.props.parentRefresh(this.state.username)
+      })
   }
 
   render() {
-    console.log(this.state.user)
+    console.log(this.state.username)
     return (
       <Container>
         <Typography>Sign In</Typography>

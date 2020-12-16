@@ -38,7 +38,7 @@ export default class Weather extends Component{
             )
         }else{
         return(<div className='element'>
-            <h1 className='title-element'>7 Day Forecast</h1>
+            <h1 className='title-element'>Weather Forecast</h1>
             <div className='all-weather'>{this.state.divs}</div>
         </div>
         )}

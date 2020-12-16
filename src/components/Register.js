@@ -38,7 +38,7 @@ export default class Register extends Component {
 
   registerAccount =e => {
       e.preventDefault();
-      console.log('hello')
+      console.log(this.state.username, this.state.password)
 
       const user = {
         username: this.state.username,
@@ -46,10 +46,23 @@ export default class Register extends Component {
         picture: this.state.photo
       }
 
-      axios.post(`https://boatertalk.herokuapp.com/register`, user)
-        .then(res => {
-            console.log(res)
-        })
+      axios({
+        url:"https://boatertalk.herokuapp.com/register",
+        withCredentials:true,
+        method:"POST",
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        data:{
+          username:this.state.username,
+          password:this.state.password,
+          picture:this.state.photo
+        }
+      } 
+      ).then(res=>{
+        console.log(res);
+        localStorage.setItem('token',res.data.token);
+      })     
   }
 
 

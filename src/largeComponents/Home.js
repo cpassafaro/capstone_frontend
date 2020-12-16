@@ -13,40 +13,31 @@ class Home extends Component{
 
     this.state = {
       isLoading:true,
-      user: ''
+      user: '',
     }
   }
 
   componentDidMount = () => {
-    console.log('app-mounted')
-
-    axios.get(`https://boatertalk.herokuapp.com/getUser`, {withCredentials: true})
-      .then(res => {
-          console.log(res)
-        this.setState({user: res})
-      })
+    // console.log('app-mounted')
+    let token = localStorage.getItem('token');
+    // console.log(token)
+    axios({
+      url:"https://boatertalk.herokuapp.com/getUser",
+      method:"GET",
+      headers: {
+        authorization: `Bearer ${token}`
+      },
+      withCrendentials:true
+    } ).then(res=>{
+      // console.log(res.data);
+      this.setState({user: res.data})
+    })
   }
-    // componentDidMount = () => {
-    //     console.log('app-mounted')
-    //     // const headers={
-    //     // "Content-Type": 'application/json',
-    //     // "Access-Control-Allow-Origin": '*',
-    //     // Accept: 'application/json'
-    //     // }
-    //     //this isn't liking the end of the json function for some reason
-    //     // fetch('https://boatertalk.herokuapp.com/getUser')
-    //     //     .then(res => res.json())
-    //     //     .then(data =>console.log(data))
 
-    //     axios.get('https://boatertalk.herokuapp.com/getUser', {withCrendentails : true})
-    //         .then(res => {
-    //             console.log(res)
-    //         })
-    // }
 
 
   render(){
-    // console.log(this.state.user)
+    console.log(this.state.user)
     return (<div className='overall-container'>
       <div className="grid-container">
         <div className='grid image box1'></div>

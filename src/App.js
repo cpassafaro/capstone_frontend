@@ -8,6 +8,7 @@ import Weather from './largeComponents/Weather'
 import SearchRiver from './largeComponents/SearchRiver';
 import RiverDetailsPage from './largeComponents/RiverDetailsPage'
 import Register from './components/Register'
+import Favorites from './largeComponents/Favorites'
 import { CircularProgress } from "@material-ui/core/";
 import { Route, Link} from "react-router-dom";
 
@@ -22,19 +23,19 @@ class App extends Component{
     }
   }
 
-  // componentDidMount = () => {
-  //   console.log('app-mounted')
-  //   const headers={
-  //     "Content-Type": 'application/json',
-  //     "Access-Control-Allow-Origin": '*',
-  //     Accept: 'application/json'
-  //   }
+  componentDidMount = () => {
+    console.log('app-mounted')
+  }
 
-  //   fetch(`https://boatertalk.herokuapp.com/getUser`, {credentials: 'include'})
-  //     .then(res => res.json())
-  //     .then(res =>console.log(res))
-  // }
+  componentDidUpdate (){
+    console.log('app-update')
+  }
 
+  parentRefresh = (user) => {
+    console.log('hello')
+    let welcome =`Welcome ${user}`
+    this.setState({user:welcome})
+  }
 
   render(){
     console.log(this.state.user)
@@ -43,8 +44,11 @@ class App extends Component{
           <Link exact to = "/"></Link>
         </nav>
         <main>
-          <Header/>
-          <Route path="/signin" component={SignIn}/>
+          <Header signInUser={this.state.user}/>
+          <Route path="/signin" render={() => {
+            return <SignIn parentRefresh={this.parentRefresh}/>
+          }}/>
+          <Route path='/favorites' component={Favorites}/>
           <Route path='/register' component={Register}/>
           <Route exact path='/' component={Home}/>
           <Route path='/searchrivers' component={SearchRiver}/>

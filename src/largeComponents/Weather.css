@@ -3,19 +3,32 @@
     justify-content: center;
     align-items:space-around;
     color:white;
-    padding:30px;
+    padding:20px;
+    background-image: url('https://wi-images.condecdn.net/image/doEYpG6Xd87/crop/2040/f/weather.jpg');
+    background-size: contain;
+    height:300px;
+    font-size: 35px;
 }
 
+.all-weather{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #65B6E4;
+    margin-top:-30px;
+}
 .weather-container{
     display:flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height:250px;
-    color:white;
-    width:33.33%;
-    border: 3px solid white;
-    background-color: #563C66;
+    height:300px;
+    color: black;
+    width:29%;
+    border: 5px solid #28595A;
+    border-radius: 25px;
+    background-color: white;
+    margin-bottom:30px;
 }
 
 .snapshot-container{
@@ -23,7 +36,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
+    padding:15px;
 }
 
 .detailed-container{
@@ -32,10 +45,19 @@
     justify-content: center;
     align-items: center;
     object-fit: contain;
+    border: 2px solid black;
 }
 
 .all-weather{
     display:flex;
     flex-direction: row;
     flex-wrap:wrap
+}
+
+.current-day{
+    font-size:20px;
+    font-weight: bold;
+    /* display:flex;
+    justify-content: center;
+    align-self: flex-start; */
 }

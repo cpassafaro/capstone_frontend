@@ -75,7 +75,7 @@ export default class SearchRiver extends Component {
           <div className="river-title">{element.name}</div>
           <div className="river-level">Current Water Level :{element.value} cfs</div>
           <Link to={{pathname: "/riverdetails", params: {data: element}}}>
-            <Button>See River Details</Button>
+            <Button style={{color: 'white', fontWeight:'bolder'}}>See River Details</Button>
           </Link>
         </div>
       );
