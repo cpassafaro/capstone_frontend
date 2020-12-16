@@ -21,7 +21,8 @@ export default class RiverDetailsPage extends Component {
       weather: [],
       comment: "",
       alreadyCreatedComments: '',
-      user: props.user
+      user: props.user,
+      userWaterLevel: ''
     };
   }
 
@@ -126,6 +127,10 @@ export default class RiverDetailsPage extends Component {
     }
   }
 
+  getUserWaterLevel = () => {
+    
+  }
+
 
 
 
@@ -145,7 +150,8 @@ export default class RiverDetailsPage extends Component {
           <div className="weather-title-box">
             <div className="river-detail-box">
               <div className="river-title opacity">{this.state.river}</div>
-              <div className='opacity'>{this.state.level} cfs</div>
+              <div className='opacity'>USGS GAUGE: {this.state.level} cfs</div>
+              <div>{this.state.userWaterLevel}</div>
               <div>
                 <Button style={{backgroundColor:'#573C67', color:'white', marginTop: '10px', textDecoration:'none'}} onClick={this.addFavorites}>Add to Favorites</Button>
                 <Button style={{backgroundColor:'#573C67', color:'white', marginTop: '10px', marginLeft:'10px', textDecoration:'none'}}>Add visual level</Button>
