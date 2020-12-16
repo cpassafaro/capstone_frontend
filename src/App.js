@@ -19,7 +19,8 @@ class App extends Component{
 
     this.state = {
       isLoading:true,
-      user: ''
+      user: '',
+      userWithoutWelcome: ''
     }
   }
 
@@ -34,7 +35,7 @@ class App extends Component{
   parentRefresh = (user) => {
     console.log('hello')
     let welcome =`Welcome ${user}`
-    this.setState({user:welcome})
+    this.setState({user:welcome, userWithoutWelcome:user})
   }
 
   render(){
@@ -45,14 +46,16 @@ class App extends Component{
         </nav>
         <main>
           <Header signInUser={this.state.user}/>
-          <Route path="/signin" render={() => {
-            return <SignIn parentRefresh={this.parentRefresh}/>
+          <Route path="/signin" render={(routerProps) => {
+            return <SignIn {...routerProps} parentRefresh={this.parentRefresh}/>
           }}/>
           <Route path='/favorites' component={Favorites}/>
           <Route path='/register' component={Register}/>
           <Route exact path='/' component={Home}/>
           <Route path='/searchrivers' component={SearchRiver}/>
-          <Route path='/riverdetails' component={RiverDetailsPage}/>
+          <Route path='/riverdetails' render={(routerProps) => {
+            return <RiverDetailsPage {...routerProps} user={this.state.userWithoutWelcome}/>
+          }}/>
           <Route path='/weather' component={Weather}/>
         </main>
       </div>

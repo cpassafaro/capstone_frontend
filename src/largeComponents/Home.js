@@ -49,6 +49,9 @@ class Home extends Component{
             <Link to='/searchrivers'>
                 <p>Search Rivers</p>   
             </Link> 
+            <Link to='/favorites'>
+              <div>Favorites</div>
+            </Link>
         </div>
         <div className='grid image box4'></div>
         <div className='grid image box5'></div>

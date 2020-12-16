@@ -11,6 +11,7 @@ export default class RiverDetailsPage extends Component {
     super(props);
     console.log(props);
     this.state = {
+      data:props.location.params.data,
       river: props.location.params.data.name,
       level: props.location.params.data.value,
       latitude: props.location.params.data.latitude,
@@ -19,7 +20,8 @@ export default class RiverDetailsPage extends Component {
       isLoading: true,
       weather: [],
       comment: "",
-      alreadyCreatedComments: ''
+      alreadyCreatedComments: '',
+      user: props.user
     };
   }
 
@@ -106,12 +108,30 @@ export default class RiverDetailsPage extends Component {
     }
   };
 
+  addFavorites = () => {
+    let user ={
+      username: this.state.user,
+      favorites: [this.state.data]
+    }
+    if(this.state.user != ''){
+      axios.put(`https://boatertalk.herokuapp.com/favorites/${this.state.user}`, user)
+      .then(res => {
+        console.log(res.status)
+        if(res.status == 200){
+          alert('Success')
+          console.log(res)
+      }})
+    }else{
+      alert('Login or Create User to have access')
+    }
+  }
+
 
 
 
 
   render() {
-    console.log(this.state.weather);
+    console.log(this.state.user);
     if (this.state.isLoading == true) {
       return (
         <CircularProgress
@@ -126,23 +146,21 @@ export default class RiverDetailsPage extends Component {
             <div className="river-detail-box">
               <div className="river-title opacity">{this.state.river}</div>
               <div className='opacity'>{this.state.level} cfs</div>
+              <div>
+                <Button style={{backgroundColor:'#573C67', color:'white', marginTop: '10px', textDecoration:'none'}} onClick={this.addFavorites}>Add to Favorites</Button>
+                <Button style={{backgroundColor:'#573C67', color:'white', marginTop: '10px', marginLeft:'10px', textDecoration:'none'}}>Add visual level</Button>
+              </div>
             </div>
             <div className="weather-box">
               <div className='opacity'>WEATHER</div>
               <div className='opacity smaller'>{this.state.temperature}: {this.state.weather[0].detailedForecast}</div>
-              {/* <div className='opacity smaller'>{this.state.weather[0].detailedForecast}</div> */}
               <img src={this.state.weather[0].icon} style={{border: '3px solid black'}}/>
               <Link to={{pathname:'/weather', params:{data: this.state.weather}}}>
                 <Button style={{backgroundColor:'#573C67', color:'white', marginTop: '10px', textDecoration:'none'}}>Get 7 day forecast for this area</Button>
               </Link>
             </div>
           </div>
-          <div className="textfield">
-            <p className='text-p'>
-              If you have recently gotten a run on this river and would like to
-              leave a rapid update, please do so below.
-            </p>
-          </div>
+          <div className="comment-container">
           <div className='submission-area'>
               <textarea 
                 value={this.state.comment}
@@ -164,6 +182,7 @@ export default class RiverDetailsPage extends Component {
               >
                 Add Comment
               </Button>
+            </div>
           </div>
           <div className='comment-container'>{this.state.alreadyCreatedComments}</div>
         </div>

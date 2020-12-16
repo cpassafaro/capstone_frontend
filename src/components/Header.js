@@ -57,9 +57,6 @@ export default class Header extends Component{
       </div>
       <div className='p-container'>
         <div className='link'>{this.state.user}</div>
-        <Link to='/favorites' className='link'>
-          <div>Favorites</div>
-        </Link>
         <Link to="/signin" className='link'>
           <p>Sign In</p>
         </Link>
