@@ -26,6 +26,20 @@ class App extends Component{
 
   componentDidMount = () => {
     console.log('app-mounted')
+    let token = localStorage.getItem('token');
+    // console.log(token)
+    axios({
+      url:"https://boatertalk.herokuapp.com/getUser",
+      method:"GET",
+      headers: {
+        authorization: `Bearer ${token}`
+      },
+      withCrendentials:true
+    } ).then(res=>{
+      console.log(res.data.username);
+      let welcome = 'Welcome ' + res.data.username
+      this.setState({user: welcome})
+    })
   }
 
   componentDidUpdate (){
