@@ -93,8 +93,10 @@ export default class Favorties extends Component {
   render() {
     // console.log(this.state.user);
     return (
-      <div>
-        <h1 className='title'>Favorite Rivers for: {this.state.username}</h1>
+      <div className='favorites-container'>
+        <div className='favorites-box'>
+          <h1 className='favorite-title'>Favorite Rivers for: {this.state.username}</h1>
+        </div>
         <div className='fav-container'>{this.state.favorites}</div>
       </div>
     );
