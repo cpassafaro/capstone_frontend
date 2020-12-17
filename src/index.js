@@ -5,14 +5,14 @@ import App from './App';
 import {
   BrowserRouter as Router
 } from "react-router-dom";
-import { createBrowserHistory } from 'history';
-// import browserHistory from 'react-router-dom';
-const BrowserHistory = createBrowserHistory()
+import DocumentTitle from 'react-document-title'
+
 
 ReactDOM.render(
-  <Router history={BrowserHistory}>
+  <DocumentTitle title='boater beta'>
+  <Router>
     <App />
-  </Router>,
+  </Router></DocumentTitle>,
   document.getElementById('root')
 );
 
