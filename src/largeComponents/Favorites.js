@@ -25,7 +25,7 @@ export default class Favorties extends Component {
   };
 
   deleteFavorites = (e) => {
-    let river = e.target.parentElement.parentElement.firstChild.firstChild.textContent
+    let river = e.target.parentElement.parentElement.parentElement.firstChild.firstChild.textContent
     console.log(river)
     let favorites = this.state.user.favorites
     console.log(favorites)
