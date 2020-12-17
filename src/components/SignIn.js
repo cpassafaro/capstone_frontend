@@ -59,6 +59,12 @@ export default class SignIn extends Component {
         localStorage.setItem('token',res.data.token);
         res.headers.authorization = `Bearer ${res.data.token}`
         this.props.parentRefresh(this.state.username)
+        alert('Success')
+        this.props.history.push('/')
+      }).catch(function(error){
+        if(error.response){
+          alert('Username or Password Invalid')
+        }
       })
   }
 
@@ -69,6 +75,7 @@ export default class SignIn extends Component {
         <Typography>Sign In</Typography>
         <div className='input-area'>
             <TextField 
+            style={{marginBottom:'10px'}}
             className='box'
             id="outlined-password-input"
             label="Username"
@@ -78,6 +85,7 @@ export default class SignIn extends Component {
             onChange={this.getUsername}
             />
             <TextField
+            style={{marginBottom:'10px'}}
             className='box'
             id="outlined-password-input"
             label="Password"

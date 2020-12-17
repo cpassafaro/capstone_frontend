@@ -109,7 +109,7 @@ export default class RiverDetailsPage extends Component {
       //have to call asynchrnously because axios post request takes a second to update to db
       setTimeout(() => {
         this.getComments()
-      }, 2000) 
+      }, 500) 
     }
   };
 

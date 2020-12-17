@@ -57,11 +57,21 @@ export default class Register extends Component {
           username:this.state.username,
           password:this.state.password,
           picture:this.state.photo
-        }
+        },
       } 
       ).then(res=>{
-        console.log(res);
+        console.log(res.data);
+        if(res.status ==200){
+          alert('Success! Please Sign in!')
+          this.props.history.push('/signin')
+        }
         localStorage.setItem('token',res.data.token);
+      })
+      .catch(function(error){
+        if(error.response){
+          alert('Username already taken')
+        }
+        localStorage.setItem('token','');
       })     
   }
 
@@ -69,10 +79,11 @@ export default class Register extends Component {
 
   render() {
     return (
-      <Container>
+      <Container className='input-area'>
         <Typography>Create Account</Typography>
         <div className='input-area'>
-            <TextField 
+            <TextField  
+            style={{marginBottom:'10px'}}
             className='box'
             id="outlined-password-input"
             label="Username"
@@ -82,6 +93,7 @@ export default class Register extends Component {
             onChange={this.getUsername}
             />
             <TextField
+            style={{marginBottom:'10px'}}
             className='box'
             id="outlined-password-input"
             label="Password"
@@ -90,8 +102,8 @@ export default class Register extends Component {
             variant="outlined"
             onChange={this.getPassword}
             />
-            
             <TextField 
+            style={{marginBottom:'10px'}}
             className='box'
             id="outlined-password-input"
             label="Photo Url"
