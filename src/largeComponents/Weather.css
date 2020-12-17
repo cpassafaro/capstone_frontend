@@ -61,3 +61,13 @@
     justify-content: center;
     align-self: flex-start; */
 }
+.go-back-button{
+    margin-bottom:50px;
+    padding:20px;
+}
+.button-container{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #65B6E4;
+}

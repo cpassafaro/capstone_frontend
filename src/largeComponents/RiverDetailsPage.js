@@ -169,7 +169,7 @@ export default class RiverDetailsPage extends Component {
                 pathname:'/weather', 
                 params:{
                   data: this.state.weather,
-                  currentRiver: this.state.river
+                  currentRiver: this.state.data
                 }
               }}>
                 <Button style={{backgroundColor:'#573C67', color:'white', marginTop: '10px', textDecoration:'none'}}>Get 7 day forecast for this area</Button>

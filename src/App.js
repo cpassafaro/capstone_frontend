@@ -38,7 +38,7 @@ class App extends Component{
     } ).then(res=>{
       console.log(res.data.username);
       let welcome = 'Welcome ' + res.data.username
-      this.setState({user: welcome})
+      this.setState({user: welcome, userWithoutWelcome:res.data.username})
     })
   }
 
