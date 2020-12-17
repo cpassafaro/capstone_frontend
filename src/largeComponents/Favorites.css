@@ -1,0 +1,14 @@
+.title{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    color:white;
+}
+
+.fav-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: space-around;
+    flex-wrap: wrap;
+
+}

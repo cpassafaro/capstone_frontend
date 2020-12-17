@@ -5,9 +5,12 @@ import App from './App';
 import {
   BrowserRouter as Router
 } from "react-router-dom";
+import { createBrowserHistory } from 'history';
+// import browserHistory from 'react-router-dom';
+const BrowserHistory = createBrowserHistory()
 
 ReactDOM.render(
-  <Router>
+  <Router history={BrowserHistory}>
     <App />
   </Router>,
   document.getElementById('root')

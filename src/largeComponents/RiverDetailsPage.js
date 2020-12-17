@@ -154,7 +154,7 @@ export default class RiverDetailsPage extends Component {
               <div>{this.state.userWaterLevel}</div>
               <div>
                 <Button style={{backgroundColor:'#573C67', color:'white', marginTop: '10px', textDecoration:'none'}} onClick={this.addFavorites}>Add to Favorites</Button>
-                <Button style={{backgroundColor:'#573C67', color:'white', marginTop: '10px', marginLeft:'10px', textDecoration:'none'}}>Add visual level</Button>
+                {/* <Button style={{backgroundColor:'#573C67', color:'white', marginTop: '10px', marginLeft:'10px', textDecoration:'none'}}>Add visual level</Button> */}
               </div>
             </div>
             <div className="weather-box">

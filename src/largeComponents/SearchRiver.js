@@ -59,7 +59,6 @@ export default class SearchRiver extends Component {
           longitude: riverArray[i].sourceInfo.geoLocation.geogLocation.longitude
         };
         riverInfo.push(river);
-        // console.log(riverInfo)
       }
     }
     this.buildHtml(riverInfo);
