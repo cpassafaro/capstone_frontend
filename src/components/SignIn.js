@@ -89,7 +89,7 @@ export default class SignIn extends Component {
             className='box'
             id="outlined-password-input"
             label="Password"
-            type="username"
+            type="password"
             autoComplete="current-password"
             variant="outlined"
             onChange={this.getPassword}
