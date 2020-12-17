@@ -9,10 +9,12 @@ import DocumentTitle from 'react-document-title'
 
 
 ReactDOM.render(
-  <DocumentTitle title='boater beta'>
+  // <DocumentTitle title='boater beta'>
   <Router>
     <App />
-  </Router></DocumentTitle>,
+  </Router>
+  // </DocumentTitle>
+  ,
   document.getElementById('root')
 );
 
