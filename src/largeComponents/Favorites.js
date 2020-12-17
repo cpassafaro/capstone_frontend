@@ -67,19 +67,21 @@ export default class Favorties extends Component {
     let fav = userInfo.favorites;
     fav.forEach((river) => {
       let div = (
-        <Card style={{width:'30%'}}>
+        <Card style={{width:'30%', marginBottom: '10px', marginTop:'10px'}}>
         <CardContent>
           <Typography variant="h5" component="h2" value={river}>
           {river.name}
           </Typography>
           <Typography variant="body2" component="p">
-            {river.value}cfs
+            Water Level {river.value}cfs
           </Typography>
         </CardContent>
-        <Link to={{pathname: "/riverdetails", params: {data: river}}}>
-          <Button size="small">See Details</Button>
-        </Link>
-        <Button onClick={this.deleteFavorites}>Delete</Button>
+        <div className='buttons'>
+          <Link to={{pathname: "/riverdetails", params: {data: river}}}>
+            <Button size="small" style={{textDecoration:'none', color:'white'}} className='Button'>See Details</Button>
+          </Link>
+          <Button onClick={this.deleteFavorites} style={{textDecoration:'none', color:'white'}} className='Button'>Delete</Button>
+        </div>
       </Card>
       );
       empty.push(div);

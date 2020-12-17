@@ -6,7 +6,7 @@ import './Weather.css'
 export default class Weather extends Component{
     constructor(props){
         super(props);
-        console.log(props)
+        console.log('hey kev', props)
         this.state = {
             weather: props.location.params.data,
             divs: '',

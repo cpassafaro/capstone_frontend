@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import "./RiverDetail.css";
 import { Route, Link } from "react-router-dom";
+import _ from 'lodash';
 import { TextField, Button, CircularProgress } from "@material-ui/core/";
 
 axios.defaults.withCredentials = false;
@@ -10,18 +11,21 @@ export default class RiverDetailsPage extends Component {
   constructor(props) {
     super(props);
     console.log(props);
+
+
+
     this.state = {
-      data:props.location.params.data,
-      river: props.location.params.data.name,
-      level: props.location.params.data.value,
-      latitude: props.location.params.data.latitude,
-      longitude: props.location.params.data.longitude,
+      data: _.get(props, 'location.params.data'),
+      river: _.get(props, 'location.params.data.name'),
+      level: _.get(props, 'location.params.data.value'),
+      latitude: _.get(props, 'location.params.data.latitude'),
+      longitude: _.get(props, 'location.params.data.longitude'),
       name: "",
       isLoading: true,
       weather: [],
       comment: "",
       alreadyCreatedComments: '',
-      user: props.user,
+      user: _.get(props, 'user'),
       userWaterLevel: ''
     };
   }
@@ -161,7 +165,13 @@ export default class RiverDetailsPage extends Component {
               <div className='opacity'>WEATHER</div>
               <div className='opacity smaller'>{this.state.temperature}: {this.state.weather[0].detailedForecast}</div>
               <img src={this.state.weather[0].icon} style={{border: '3px solid black'}}/>
-              <Link to={{pathname:'/weather', params:{data: this.state.weather}}}>
+              <Link to={{
+                pathname:'/weather', 
+                params:{
+                  data: this.state.weather,
+                  currentRiver: this.state.river
+                }
+              }}>
                 <Button style={{backgroundColor:'#573C67', color:'white', marginTop: '10px', textDecoration:'none'}}>Get 7 day forecast for this area</Button>
               </Link>
             </div>

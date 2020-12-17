@@ -10,5 +10,16 @@
     justify-content: space-around;
     align-items: space-around;
     flex-wrap: wrap;
+}
 
+.buttons{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #573C67;
+    color:white;
+}
+
+.Button:hover{
+    background-color:#9268aa ;
 }
