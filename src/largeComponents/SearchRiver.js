@@ -50,6 +50,7 @@ export default class SearchRiver extends Component {
         riverArray[i - 1].sourceInfo.siteName
       ) {
         // console.log(`hit ${riverArray[i]}`)
+        //could get feet here and pass it down
       } else {
         // console.log('here')
         let river = {

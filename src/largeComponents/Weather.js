@@ -6,7 +6,7 @@ import { Route, Link } from "react-router-dom";
 export default class Weather extends Component{
     constructor(props){
         super(props);
-        console.log('hey kev', props)
+        console.log('hey christina', props)
         this.state = {
             weather: props.location.params.data,
             divs: '',

@@ -32,7 +32,7 @@ export default class RiverDetailsPage extends Component {
 
 
   componentDidMount = () => {
-    // this gets the weather station for our latitue and longitude
+    // this gets the weather station for our latitue and longitude gets closest observation state to it
     this.getComments()
     let element = "";
     axios
@@ -47,7 +47,7 @@ export default class RiverDetailsPage extends Component {
       });
   };
   
-  //is it okay to use component did update for this
+
   getComments = () => {
       console.log('update')
        axios.get(`https://boatertalk.herokuapp.com/comment/${this.state.river}`)
