@@ -4,7 +4,7 @@
 https://hardcore-jackson-68ff7b.netlify.app/riverdetails
 
 ## Sample
-******8
+******
 ![Home Page](images/Sample.png)
 
 ## Descriptions
